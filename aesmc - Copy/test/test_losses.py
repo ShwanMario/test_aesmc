@@ -99,7 +99,7 @@ class TestModels(unittest.TestCase):
         initial_loc = torch.zeros([dim,dim]).to(device)
         initial_scale = torch.eye(dim).to(device)
         true_transition_mult = torch.eye(dim).to(device)
-        init_transition_mult = (torch.eye(dim)*0.1).to(device)
+        init_transition_mult = (0.1*torch.eye(dim)).to(device)
         transition_scale =  torch.eye(dim).to(device)
         true_emission_mult = (0.5*torch.eye(dim)).to(device)
         init_emission_mult = torch.eye(dim).to(device)
@@ -107,7 +107,7 @@ class TestModels(unittest.TestCase):
         init_proposal_scale_0 = (0.1*torch.eye(dim)).to(device)
         init_proposal_scale_t = (0.1*torch.eye(dim)).to(device)
 
-        emission_scale = torch.tensor([[0.1**0.5, 0.0], [0.0, 0.1**0.5]]).to(device)
+        emission_scale = ((0.1**0.5)* torch.eye(dim)).to(device)
         num_timesteps = 51
         num_test_obs = 10
         test_inference_num_particles = 100
